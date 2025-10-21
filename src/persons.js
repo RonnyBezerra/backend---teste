@@ -19,7 +19,7 @@ const persons = [
     },
     {
         name: "Laura Rodrigues",
-        nickname: "Laura + Rego",
+        nickname: "Aura + Ego",
         age: 17,
         email: "lauraamavictor@gmail.com"
     },
