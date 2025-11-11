@@ -22,6 +22,33 @@ app.get("/", (request, response) => {
     })
 })
 
+app.post("/login", (request, response) => {
+    const {email, password} = request.body.user
+
+    const selectCommand = `
+        SELECT *
+        FROM marciomarcal_02tb
+        WHERE email = ?
+    `
+
+    database.query(selectCommand, [email], (error, user) => {
+        if (error) {
+            console.log(error)
+            return
+        }
+
+        if (user.length === 0 || user.password  !== password) {
+            response.json({ message: "Usuário ou senha incorretos:" })
+            return
+        }
+
+        response.json({ 
+            message: "Login efetuado com sucesso!",
+            token: "usuarioLogado123"
+        })
+    })
+})
+
 app.post("/cadastrar", (request, response) => {
     const { user } = request.body
 
