@@ -37,14 +37,14 @@ app.post("/login", (request, response) => {
             return
         }
 
-        if (user.length === 0 || user.password  !== password) {
+        if (user.length === 0 || user[0].password  !== password) {
             response.json({ message: "Usuário ou senha incorretos:" })
             return
         }
 
         response.json({ 
-            message: "Login efetuado com sucesso!",
-            token: "usuarioLogado123"
+            id: user[0].id,
+            name: user[0].name
         })
     })
 })
